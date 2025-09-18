@@ -1,0 +1,31 @@
+{
+    "id": "BDC08F33",
+    "path": "~/umn/minnesota-animal-movement-archive/about.qmd",
+    "project_path": "about.qmd",
+    "type": "quarto_markdown",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1758221824699.0,
+    "source_on_save": false,
+    "relative_order": 4,
+    "properties": {
+        "rmdVisualMode": "true",
+        "rmdVisualWrapConfigured": "true",
+        "source_window_id": "",
+        "Source": "Source",
+        "docOutlineVisible": "0",
+        "rmdVisualCollapsedChunks": "",
+        "cursorPosition": "0,0",
+        "scrollLine": "5",
+        "rmdVisualModeLocation": "80:0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1758230988,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1758230988453,
+    "read_only": false,
+    "read_only_alternatives": []
+}
