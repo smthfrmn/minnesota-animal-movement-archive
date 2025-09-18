@@ -1,0 +1,67 @@
+---
+title: "The Minnesota Animal Movement Archive"
+author: "Smith Freeman, Dr. John Fieberg"
+affiliation: "University of Minnesota - Department of Fisheries, Wildlife, and Conservation Biology"
+date: today
+format: 
+  html:
+    toc: true
+    toc-depth: 2
+    theme: default
+  pdf:
+    toc: true
+    number-sections: true
+---
+
+## Overview
+
+The Minnesota Animal Movement Archive is a collection documenting wildlife movement and behaviors across the state of Minnesota. With this archive, we aim to bring together datasets from Environment and Natural Resources Trust Fund (ENRTF) projects and partnerships with State, Tribal, Federal, and University researchers to create a unified resource for understanding how Minnesota's wildlife navigate and use their habitats.
+
+This initiative is funded by ENRTF and managed by Dr. John Fieberg and PhD student Smith Freeman at the University of Minnesota. We began this project in summer 2025 and the archive will be actively growing as we work with researchers to add their studies.
+
+## Frequently Asked Questions
+
+If you're curious to learn more about the project, please read our [FAQ](https://docs.google.com/document/d/1VbV4m6tWavZl5TyKIsO5uftbkeWQ8Thdex2Mj2vL26Q/edit?tab=t.28u8wyu3mhmm).
+
+## How to Participate
+
+We invite researchers, wildlife managers, and conservation organizations working in Minnesota to join our efforts to build this comprehensive data archive.
+
+### Data Owners
+
+The archive supports owners of wildlife tracking data with both public and controlled-access options, allowing participation with ongoing studies, sensitive species locations, or data requiring formal sharing agreements. To get started, follow our [How to Participate](https://docs.google.com/document/d/1VbV4m6tWavZl5TyKIsO5uftbkeWQ8Thdex2Mj2vL26Q/edit?tab=t.bvv3avvjj1ph) document.
+
+### Data Users
+
+Browse participating studies in the list below. While some studies are open to the public, most require permission for conservation reasons. We encourage you to:
+
+-   Contact data owners directly to discuss potential collaborations
+-   Review Movebank's guidelines for data requests and collaborations
+-   Follow proper citation protocols when using archived data
+-   Consider how combined datasets can provide insights spanning larger areas and longer time periods
+
+## Funding and Maintenance
+
+This archive is supported by the ENRTF: [Data/Tools to Maximize Impact of ENTRF Projects](https://www.lccmr.mn.gov/proposals/2025/originals/proposal_2025-111.pdf). Long-term maintenance and support is provided by the University of Minnesota and Movebank.
+
+## Citation
+
+To cite data participating in this collection, please follow Movebank's [citation guidelines](https://www.movebank.org/cms/movebank-content/citation-guidelines) and acknowledge the original data owners and funding sources.
+
+## Contact
+
+For more information about participating in or using the Minnesota Animal Movement Archive, contact:
+
+**Project Manager:** Smith Freeman, PhD Student\
+**Organization:** University of Minnesota - Department of Fisheries, Wildlife, and Conservation Biology\
+**Email:** freem850\@umn.edu
+
+## Participating Studies
+
+The collection is actively growing as we work with researchers from past ENRTF projects and new partners to archive their movement data.
+
+::: callout-note
+## Archive Status
+
+This archive is actively growing. Check back regularly for new participating studies and datasets.
+:::

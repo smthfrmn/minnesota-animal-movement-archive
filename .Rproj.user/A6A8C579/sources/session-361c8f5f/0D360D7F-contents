@@ -1,0 +1,26 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Minnesota Animal Movement Archive"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: faq.qmd
+        text: FAQ
+      - href: how_to_participate.qmd
+        text: How to Participate
+      - href: participation_agreement.qmd
+        text: Participation Agreement
+      - href: about.qmd
+        text: About Us
+
+format:
+  html:
+    theme: sandstone
+    css: styles.css
+    toc: true
+
+editor: visual
