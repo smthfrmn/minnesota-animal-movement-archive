@@ -6,11 +6,13 @@ format:
     theme: default
 ---
 
-This archive is supported by an ENRTF grant: [Data/Tools to Maximize Impact of ENTRF Projects](https://www.lccmr.mn.gov/proposals/2025/originals/proposal_2025-111.pdf). Long-term maintenance and support is provided by the University of Minnesota and Movebank.
+The archive is supported by an ENRTF grant: [Data/Tools to Maximize Impact of ENTRF Projects](https://www.lccmr.mn.gov/proposals/2025/originals/proposal_2025-111.pdf). Long-term maintenance and support is provided by the University of Minnesota and Movebank. For more information about participating in, or using the Minnesota Animal Movement Archive, contact Smith at freem850\@umn.edu.
+<br>
+<br>
 
 ::: columns
 ::: {.column width="30%"}
-![](figures/john_photo.png){width="300"}
+![](../figures/john_photo.png){width=300}
 :::
 
 ::: {.column width="2%"}
@@ -18,20 +20,19 @@ This archive is supported by an ENRTF grant: [Data/Tools to Maximize Impact of E
 
 ::: {.column width="68%"}
 ::: {style="line-height: 1.2;padding-left=100"}
-**Dr. John Fieberg**
-
-Professor of Quantitative Ecology
-
-University of Minnesota
-
-Website: https://fieberg-lab.cfans.umn.edu/
+<br>
+<br>
+**Dr. John Fieberg**<br>
+Professor of Quantitative Ecology<br>
+University of Minnesota<br> 
+[Website](https://fieberg-lab.cfans.umn.edu/)<br>
 :::
 :::
 :::
 
 ::: columns
 ::: {.column width="30%"}
-![](figures/smithfreeman.png){width="270"}
+![](../figures/smithfreeman.png)
 :::
 
 ::: {.column width="2%"}
@@ -39,13 +40,14 @@ Website: https://fieberg-lab.cfans.umn.edu/
 
 ::: {.column width="68%"}
 ::: {style="line-height: 1.2;padding-left=100"}
-**Smith Freeman**
-
-Conservation Science PhD Student
-
-University of Minnesota
-
-For more information about participating in, or using the Minnesota Animal Movement Archive, contact me (Smith) at freem850\@umn.edu.
+<br>
+<br>
+<br>
+**Smith Freeman**<br> 
+Conservation Science PhD Student<br> 
+University of Minnesota<br> 
 :::
 :::
 :::
+
+

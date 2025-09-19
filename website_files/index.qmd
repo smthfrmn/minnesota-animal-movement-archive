@@ -6,7 +6,7 @@ format:
     theme: default
 ---
 
-![](figures/logo_black_text.png){fig-align="center" width="300"}
+![](../figures/logo_black_text.png){fig-align="center" width="300"}
 
 The Minnesota Animal Movement Archive is a collection documenting wildlife movement and behaviors across the state of Minnesota. With this archive, we aim to bring together datasets from Environment and Natural Resources Trust Fund (ENRTF) projects and partnerships with State, Tribal, Federal, and University researchers to create a unified resource for understanding how Minnesota's wildlife navigate and use their habitats. The archive is hosted on [Movebank](https://www.movebank.org/).
 
