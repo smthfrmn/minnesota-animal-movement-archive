@@ -5,9 +5,9 @@ format:
     theme: default
 ---
 
-![](figures/google_form_banner.png){fig-align="center"}
+![](google_form_banner.png){fig-align="left"}
 
-Welcome to the Minnesota Animal Movement Archive. This living archive is a collection documenting wildlife movement and behaviors across the state of Minnesota. We aim to bring together datasets from Environment and Natural Resources Trust Fund (ENRTF) projects and partnerships with State, Tribal, Federal, and University researchers to create a unified resource for understanding how Minnesota's wild animals navigate and use their habitats.
+Welcome to the Minnesota Animal Movement Archive. This living archive is a collection of studies documenting wildlife movement and behaviors across the state of Minnesota. We aim to bring together datasets from Environment and Natural Resources Trust Fund (ENRTF) projects and partnerships with State, Tribal, Federal, and University researchers to create a unified resource for understanding how Minnesota's wild animals navigate and use their habitats.
 
 ## Get more info
 
