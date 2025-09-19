@@ -12,7 +12,7 @@ The archive is supported by an ENRTF grant: [Data/Tools to Maximize Impact of EN
 
 ::: columns
 ::: {.column width="30%"}
-![](../figures/john_photo.png){width=300}
+![](images/john_photo.png){width=300}
 :::
 
 ::: {.column width="2%"}
@@ -32,7 +32,7 @@ University of Minnesota<br>
 
 ::: columns
 ::: {.column width="30%"}
-![](../figures/smithfreeman.png)
+![](images/smithfreeman.png)
 :::
 
 ::: {.column width="2%"}
