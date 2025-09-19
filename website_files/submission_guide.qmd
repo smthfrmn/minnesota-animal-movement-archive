@@ -1,0 +1,113 @@
+---
+title: "Submission Guide"
+subtitle: "A detailed guide to preparing and submitting your studies to the archive"
+date: today
+format: 
+  html:
+    toc: true
+    toc-depth: 3
+    theme: default
+    code-fold: false
+---
+
+## Background
+
+The Minnesota Animal Movement Archive is an initiative funded by Minnesota's Environment and Natural Resources Trust Fund (ENRTF). Our objective is to bring together animal movement datasets from other ENRTF projects and partnerships with State, Tribal, Federal, and University researchers to create a unified resource that facilitates research and collaboration in the state of Minnesota. Any researcher with GPS telemetry data of any species -- in the state of Minnesota -- is welcome and encouraged to participate in the archive. This project is primarily managed by graduate student Smith Freeman ([freem850\@umn.edu](mailto:freem850@umn.edu)) with Principle Investigator Dr. John Fieberg at the University of Minnesota.
+
+The Minnesota Animal Movement Archive is a collection hosted on [Movebank](https://www.movebank.org). Movebank is a free, online database of animal tracking data hosted by the Max Planck Institute of Animal Behavior. Movebank enables animal tracking researchers to manage, share, protect, analyze and archive their data. Because we host the archive on Movebank, all potential participants should have their movement data uploaded to Movebank. If your data are not yet on Movebank, have no fear, we lay out the steps below.
+
+## Steps to Submit Your Data to the Archive
+
+::: callout-tip
+## Study already in Movebank?
+
+If all the studies you wish to submit are already up and running in Movebank, the submission process will be pretty lightweight. Skim steps 1 - 3 to make sure your studies have the proper Study Details and Permissions set in Movebank, then complete steps 4 and 5.
+:::
+
+Much of the below steps are drawn from Movebank's User Manual, primarily [The Movebank data model](https://www.movebank.org/cms/movebank-content/movebank-data-model), [Permissions and sharing](https://www.movebank.org/cms/movebank-content/permissions-and-data-sharing), and [Create a study and add data](https://www.movebank.org/cms/movebank-content/create-study-add-data) pages. If you're someone who prefers to have all the information before you begin doing, consider reviewing the aforementioned documents; otherwise, feel free to jump in below.
+
+
+### 1. Create Movebank Study with Complete Study Details
+
+In order to participate in the archive, you will need to have your study or studies in Movebank. If your study is already in Movebank, skim through this step to make sure everything has been captured in your Study Details. Otherwise, follow Movebank's [Create a study](https://www.movebank.org/cms/movebank-content/create-study-add-data) page or watch Movebank's video guide:
+
+```{=html}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/v98epvIQPRI?si=cWRKJUTFyLZHwaZN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+```
+
+When you create your study, you will be prompted to fill out the Study Details.
+
+
+::: callout-important
+**Need Help?**
+
+If you encounter issues, contact Smith Freeman at [freem850\@umn.edu](mailto:freem850@umn.edu) or, for technical issues, Movebank support at [support\@movebank.org](mailto:support@movebank.org).
+:::
+
+We are aiming to have all studies that participate in the archive to have complete and standardized Study Details. These details will be visible (with some caveats) on your study's page and will support proper attribution and improve accessibility of the studies in the archive. We ask that all your studies have the following Study Details sections completed:
+
+-   [**Study Name:**](https://vocab.nerc.ac.uk/collection/MVB/current/MVB000173/) an informative title that includes, at least, the species. Consider also including other key words that will make your study more identifiable. For example: "MN DNR Northwest Black Bear Research Project" or "Green Heron as an Indicator of Wetland-Dependent Species, University of Minnesota."
+
+-   [**Contact Person:**](https://vocab.nerc.ac.uk/collection/MVB/current/MVB000072/) will default to you.
+
+-   [**Principal Investigator:**](https://vocab.nerc.ac.uk/collection/MVB/current/MVB000164/) will default to you as well.
+
+-   [**Citation:**](https://vocab.nerc.ac.uk/collection/MVB/current/MVB000068/) one or more citations for the publications or reports in which you used this data. If your study's data are used by someone else (with your permission), they will use this citation with Movebank's DOI for your study to reference your data. You can read more about how citations work on Movebank [here](https://www.movebank.org/cms/movebank-content/movebank-citations).
+
+-   [**Acknowledgements:**](https://vocab.nerc.ac.uk/collection/MVB/current/MVB000010/) Include co-authors and institutional owners here.
+
+-   [**Grants Used:**](https://vocab.nerc.ac.uk/collection/MVB/current/MVB000123/) A list or description of grants and other funding sources for the research.
+
+-   [**Study Summary:**](https://vocab.nerc.ac.uk/collection/MVB/current/MVB000176/) A succinct description of the project, with a focus on the context and aims of the study. For example: "We sought to examine how well coyotes survive in suburban areas in the study region by assessing individual movements, habitat use, survivorship and correlates of cause-specific mortality."
+
+### 2. Set Permissions for the Study
+
+Once you've filled out the Study Details, you'll want to set the permissions for your study, to control public access to your data. You have full control over who can view and download your data stored in Movebank. You'll want to read through Movebank's [Permissions and data sharing](https://www.movebank.org/cms/movebank-content/permissions-and-data-sharing) to understand the different settings that are available.
+
+But here are some common examples of settings you could select and what it means for the visibility/useability of your study:
+
+-   **Only summary public**
+
+    The public can view only the written Study Details (no animal locations) and send requests to the Contact listed in the Study Details to discuss proposed uses. This is recommended when public visibility of individual tracks could pose a danger to the animals or is subject to legal or institutional restrictions.
+
+    **In your study:** Ensure that "Visibility of study name and summary" is set to Public and "Default visibility of tracking data" and "Restrict data downloads to" are set to "Collaborators Only".
+
+-   **Public tracks**
+
+    The public can view a written summary as in example 1, and can view some or all animal locations on the Tracking Data Map, but cannot download data. For studies in progress, you can restrict visibility of certain animals or more recent data. This is recommended when public visibility of the tracks does not pose a danger to animals and could help others learn about your work, but if public access to the data should be restricted.
+
+    **In your study:** Ensure that "Visibility of study name and summary" and "Default visibility of tracking data" are set to Public, and "Restrict data downloads to" is set to "Collaborators Only". Check the box next to "Restrict data downloads to". To further restrict visibility, check the box next to "Restrict public access....to events older than", or see the example "Make only selected tracks visible to the public".
+
+-   **Public data**
+
+    The public can view the study summary as in example 1, plus data are downloadable after accepting terms of use. This is recommended when access to the data does not threaten the animals and there are no institutional barriers to data sharing. For active long-term studies or cases where public access to more recent data could pose a danger to animals, access to more recent data can be restricted.
+
+    **In your study:** Ensure that "Visibility of study name and summary" and "Default visibility of tracking data" are set to Public. Uncheck "Restrict data downloads to". To restrict access to more recent data, check the box next to "Restrict public access....to events older than".
+
+-   **Future public data**
+
+    If access to the data is restricted as in examples 1 and 2, we encourage use of the static embargo option to set a date up to 10 years in the future on which the data can be made public.
+
+    **In your study:** Check the box next to "Allow the public to view tracks and download data after this date" and enter a date.
+
+### 3. Import Data into Study
+
+You can either import data into your study via a live data feed or by manually uploading. The former enables near-live data to be pushed automatically from your GPS provider to Movebank. Movebank supports more than 30 tag manufacturers and data providers. Consult Movebank's [Create a study and add data](https://www.movebank.org/cms/movebank-content/create-study-add-data) page for detailed instructions.
+
+::: callout-tip
+**Don't Forget Reference Data**
+
+Make sure to upload your study's reference data as well. This reference data can include descriptions of the animals, deployments, tags used etc. and provides a lot of context not captured in the movement data alone.
+:::
+
+### 4. Add "MinnesotaAnimalMovementArchive" user as a collaborator
+
+Once your study is created and data are uploaded, add the "MinnesotaAnimalMovementArchive" user as a collaborator. This allows us to include your study in the archive. The login credentials for "MinnesotaAnimalMovementArchive" are held by the archive's managers at the University of Minnesota, please consult the participation agreement for more details or reach out to Smith Freeman at [freem850\@umn.edu](mailto:freem850@umn.edu) if you have any questions.
+
+### 5. Complete the Participation Agreement and Submission Form
+
+We have put together a form that defines the participation agreement and allows you to input the IDs of your studies -- up to 20 -- that you wish to submit to the archive. Once you have completed the previous steps for all studies, please fill out the form under \[Participation Agreement\](participation_agreement.qmd).
+
+::: {.callout-note appearance="simple" icon="false"}
+**Thanks for participating!**
+:::
