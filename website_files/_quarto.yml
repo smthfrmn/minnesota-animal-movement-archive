@@ -4,10 +4,10 @@ project:
 
 website:
   title: "Minnesota Animal Movement Archive"
-  favicon: "../figures/favicon_new.png"
+  favicon: "images/favicon_new.png"
   navbar:
     title: false
-    logo: "../figures/navbar_logo.png"
+    logo: "images/navbar_logo.png"
     background: "#003d06"
     left:
       - href: index.qmd
