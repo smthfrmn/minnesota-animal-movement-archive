@@ -105,7 +105,7 @@ Once your study is created and data are uploaded, add the "MinnesotaAnimalMoveme
 
 ### 5. Complete the Participation Agreement and Submission Form
 
-We have put together a form that defines the participation agreement and allows you to input the IDs of your studies -- up to 20 -- that you wish to submit to the archive. Once you have completed the previous steps for all studies, please fill out the form under \[Participation Agreement\](participation_agreement.qmd).
+We have put together a form that defines the participation agreement and allows you to input the IDs of your studies -- up to 20 -- that you wish to submit to the archive. Once you have completed the previous steps for all studies, please fill out the form under [Participation Agreement](participation_agreement.qmd).
 
 ::: {.callout-note appearance="simple" icon="false"}
 **Thanks for participating!**
