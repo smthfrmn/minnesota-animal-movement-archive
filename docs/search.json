@@ -102,14 +102,14 @@
     "href": "index.html",
     "title": "Minnesota Animal Movement Archive",
     "section": "",
-    "text": "The Minnesota Animal Movement Archive is a collection of studies in Movebank that contain animal movement and other animal-borne sensor data from the state of Minnesota. With this archive, we aim to bring together datasets from Environment and Natural Resources Trust Fund (ENRTF) projects and partnerships with State, Tribal, Federal, and University researchers to create a unified resource for understanding how Minnesota’s wildlife navigate and use their habitats.\nThis initiative began summer of 2025 and the archive is actively growing, take a look at the studies participating so far: Minnesota Animal Movement Archive on Movebank.\nCheckout the FAQ, Submission Guide, and About Us to learn more."
+    "text": "The Minnesota Animal Movement Archive is a collection of studies in Movebank that contain animal movement and other animal-borne sensor data from the state of Minnesota. With this archive, we aim to bring together datasets from Environment and Natural Resources Trust Fund (ENRTF) projects and partnerships with State, Tribal, Federal, and University researchers to create a unified resource for understanding how Minnesota’s wildlife navigate and use their habitats.\nThis initiative began summer of 2025 and the archive is actively growing, take a look at the studies participating so far.\nCheckout the FAQ, Submission Guide, and About Us to learn more."
   },
   {
     "objectID": "studies.html",
     "href": "studies.html",
-    "title": "Minnesota Animal Movement Archive",
+    "title": "Participating Studies",
     "section": "",
-    "text": "#| '!! shinylive warning !!': |\n#|   shinylive does not work in self-contained HTML documents.\n#|   Please set `embed-resources: false` in your metadata.\n#| standalone: true\nlibrary(shiny)\nlibrary(DT)\nlibrary(move2)\n\nprint(\"hello1\")\n\n# Set up Movebank credentials and get data\nmove2::movebank_store_credentials(\n  username = Sys.getenv(\"MOVEBANK_USERNAME\"), \n  password = Sys.getenv(\"MOVEBANK_PASSWORD\")\n)\n\nprint(\"hello3\")\n\n# Download study details\nstudy_details &lt;- move2::movebank_download_study_info(i_am_collaborator = TRUE)\n\nprint(\"hello2\")\n\n# UI\nui &lt;- fluidPage(\n  titlePanel(\"Movebank Studies\"),\n  DT::dataTableOutput(\"table\")\n)\n\n# Server\nserver &lt;- function(input, output) {\n  output$table &lt;- DT::renderDataTable({\n    DT::datatable(\n      study_details,\n      options = list(\n        pageLength = 10,\n        scrollX = TRUE\n      )\n    )\n  })\n}\n\n# Run the app\nshinyApp(ui = ui, server = server)"
+    "text": "This initiative began summer of 2025 and the archive is actively growing. If you’d like your study to be included in the archive, checkout our Submission Guide."
   },
   {
     "objectID": "about.html",

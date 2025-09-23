@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>studies – Minnesota Animal Movement Archive</title>
+<title>Participating Studies – Minnesota Animal Movement Archive</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -42,11 +42,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-f0b42d187a7f2bdd949c02e138c89708.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<meta name="shinylive:serviceworker_dir" content=".">
-<script src="site_libs/quarto-contrib/shinylive-0.9.1/shinylive/load-shinylive-sw.js" type="module"></script>
-<script src="site_libs/quarto-contrib/shinylive-0.9.1/shinylive/run-python-blocks.js" type="module"></script>
-<link href="site_libs/quarto-contrib/shinylive-0.9.1/shinylive/shinylive.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/shinylive-quarto-css/shinylive-quarto.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -74,12 +69,22 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="site_libs/datatables-binding-0.34.0/datatables.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="site_libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
 
 
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -136,60 +141,39 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content column-page" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Participating Studies</h1>
+</div>
 
 
 
+<div class="quarto-title-meta column-page">
 
-<pre class="shinylive-r" data-engine="r"><code>#| '!! shinylive warning !!': |
-#|   shinylive does not work in self-contained HTML documents.
-#|   Please set `embed-resources: false` in your metadata.
-#| standalone: true
-library(shiny)
-library(DT)
-library(move2)
+    
+  
+    
+  </div>
+  
 
-print("hello1")
 
-# Set up Movebank credentials and get data
-move2::movebank_store_credentials(
-  username = Sys.getenv("MOVEBANK_USERNAME"), 
-  password = Sys.getenv("MOVEBANK_PASSWORD")
-)
+</header>
 
-print("hello3")
 
-# Download study details
-study_details &lt;- move2::movebank_download_study_info(i_am_collaborator = TRUE)
-
-print("hello2")
-
-# UI
-ui &lt;- fluidPage(
-  titlePanel("Movebank Studies"),
-  DT::dataTableOutput("table")
-)
-
-# Server
-server &lt;- function(input, output) {
-  output$table &lt;- DT::renderDataTable({
-    DT::datatable(
-      study_details,
-      options = list(
-        pageLength = 10,
-        scrollX = TRUE
-      )
-    )
-  })
-}
-
-# Run the app
-shinyApp(ui = ui, server = server)</code></pre>
+<p>This initiative began summer of 2025 and the archive is actively growing. If you’d like your study to be included in the archive, checkout our <a href="./submission_guide.html">Submission Guide</a>. <br> <br></p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item" id="htmlwidget-85ed45bbf836f0d7e31c" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-85ed45bbf836f0d7e31c">{"x":{"filter":"none","vertical":false,"data":[["1"],["<a href=\"https://www.movebank.org/cms/webapp?gwt_fragment=page=studies,path=study7259939700\" target=\"_blank\">Test MN Archive long enough<\/a>"],["Smith Freman"],[""],[null],[null],[null],[null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Study Name<\/th>\n      <th>Principal Investigator<\/th>\n      <th>Animal Taxon<\/th>\n      <th>No. of Animals<\/th>\n      <th>First Deployment<\/th>\n      <th>Latest Deployment<\/th>\n      <th>Sensor Type<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":4},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"linked_name","targets":1},{"name":"formatted_pi","targets":2},{"name":"formatted_taxon_ids","targets":3},{"name":"number_of_individuals","targets":4},{"name":"formatted_start_time","targets":5},{"name":"formatted_latest_time","targets":6},{"name":"formatted_sensor_type_ids","targets":7}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
 
 
 
