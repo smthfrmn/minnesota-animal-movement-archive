@@ -55,8 +55,8 @@ table_data <- studies |>
         str_replace_all(",", ", ")
     ),
     formatted_sensor_type_ids = gsub(",", ", ", sensor_type_ids),
-    formatted_start_time = format(timestamp_first_deployed_location, "%m/%d/%Y %H:%M"),
-    formatted_latest_time = format(timestamp_last_deployed_location, "%m/%d/%Y %H:%M")
+    formatted_start_time = format(timestamp_first_deployed_location, "%m/%d/%Y"),
+    formatted_latest_time = format(timestamp_last_deployed_location, "%m/%d/%Y")
   ) |>
   dplyr::select(
     linked_name,
