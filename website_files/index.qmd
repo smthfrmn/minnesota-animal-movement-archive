@@ -1,7 +1,13 @@
 ---
 ---
 
-![](images/logo_black_text.png){fig-align="center" width="300"}
+::: {layout-ncol=2}
+
+![Sandhill Crane Migration (Wolfson et al.)](images/sandhill_cranes_animation.gif){width="400"}
+
+![Trumpeter Swan Migration (Wolfson et al.)](images/swans_animation.gif){width="400"}
+:::
+
 
 The Minnesota Animal Movement Archive is a collection of studies in [Movebank](https://www.movebank.org/) that contain animal movement and other animal-borne sensor data from the state of Minnesota. With this archive, we aim to bring together datasets from Environment and Natural Resources Trust Fund (ENRTF) projects and partnerships with State, Tribal, Federal, and University researchers to create a unified resource for understanding how Minnesota's wildlife navigate and use their habitats.
 
