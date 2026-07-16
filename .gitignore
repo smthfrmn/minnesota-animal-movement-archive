@@ -3,7 +3,8 @@
 _environment.local
 /_*.local
 .Rhistory
-.Rproj.user/
+.Rproj.user
+.Renviron
 
 /.quarto/
 **/*.quarto_ipynb
@@ -13,4 +14,3 @@ _environment.local
 
 
 *.DS_Store
-.Rhistory
