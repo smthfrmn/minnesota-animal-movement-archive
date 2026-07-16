@@ -1,16 +1,164 @@
 ---
+page-layout: full
 ---
 
-::: {layout-ncol=2}
+::: {.columns}
 
-![Sandhill Crane Migration (Wolfson et al.)](images/sandhill_cranes_animation.gif){width="400"}
 
-![Trumpeter Swan Migration (Wolfson et al.)](images/swans_animation.gif){width="400"}
+::: {.column style="width:65%; padding-right: 3%;"}
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(readr)
+library(leaflet)
+library(glue)
+library(dplyr)
+library(purrr)
+library(stringr)
+library(here)
+library(crosstalk)
+library(htmltools)
+
+# Colors: all points look the same *except* archived ones get a distinct color
+default_color <- "#41546a"
+archive_color <- "#A5CF6A"
+
+all_data <- read_csv(here("data/studies.csv")) |>
+  filter(!is.na(lat), !is.na(lon))
+
+# --- Jiggle points that share the exact same coordinates so overlapping ---
+# markers (e.g. co-located studies) are all individually visible/clickable.
+set.seed(42)
+jitter_amount <- 0.003  # ~ a few hundred meters at MN latitudes
+
+all_data <- all_data |>
+  group_by(lat, lon) |>
+  mutate(
+    n_at_location = n(),
+    jitter_idx = row_number()
+  ) |>
+  ungroup() |>
+  mutate(
+    angle = 2 * pi * (jitter_idx - 1) / pmax(n_at_location, 1),
+    lat = if_else(n_at_location > 1, lat + jitter_amount * sin(angle), lat),
+    lon = if_else(n_at_location > 1, lon + jitter_amount * cos(angle), lon)
+  ) |>
+  select(-n_at_location, -jitter_idx, -angle)
+
+# --- Build one combined popup per project, with a section per source ---
+# only included if that project actually has data from that source.
+build_popup <- function(row) {
+
+  title <- coalesce(row$movebank_name, row$lccmr_name, "Untitled Study")
+  sections <- glue("<b>{title}</b>")
+
+  # Movebank section (only if this project has a Movebank record)
+  if (!is.na(row$movebank_id)) {
+    sections <- c(sections, glue(
+      "<u>Movebank</u><br>",
+      "Contact: {coalesce(row$movebank_principal_investigator_name, 'Unknown')}<br>",
+      "Taxa: {coalesce(row$movebank_taxon_ids, 'Unknown')}<br>",
+      "Sensors: {coalesce(row$movebank_sensor_type_ids, 'Unknown')}<br>",
+      "Individuals: {coalesce(as.character(row$movebank_number_of_individuals), 'Unknown')}<br>",
+      "<a href='{row$movebank_url}' target='_blank'>View on Movebank</a>"
+    ))
+  }
+
+  # Motus section (only if this project has a Motus record)
+  if (!is.na(row$motus_id)) {
+    sections <- c(sections, glue(
+      "<u>Motus</u><br>",
+      "Receivers in MN: {coalesce(as.character(row$motus_n_receivers), 'Unknown')}<br>",
+      "<a href='{row$motus_url}' target='_blank'>View on Motus</a>"
+    ))
+  }
+
+  # LCCMR section (only if this project has at least one related grant;
+  # a project can have more than one LCCMR grant, so split & list them all)
+  if (!is.na(row$lccmr_ids)) {
+    ids      <- str_split(row$lccmr_ids, "\\s*;\\s*")[[1]]
+    names    <- str_split(row$lccmr_name, "\\s*;\\s*")[[1]]
+    urls     <- str_split(row$lccmr_urls, "\\s*;\\s*")[[1]]
+    contacts <- str_split(row$lccmr_contact, "\\s*;\\s*")[[1]]
+
+    grants <- pmap_chr(list(ids, names, urls, contacts), function(id, nm, url, contact) {
+      glue("&bull; <a href='{url}' target='_blank'>{id}</a> &ndash; {nm}<br>",
+           "&nbsp;&nbsp;Contact: {coalesce(contact, 'Unknown')}")
+    })
+
+    label <- if (length(ids) > 1) "LCCMR Grants" else "LCCMR Grant"
+    sections <- c(sections, glue(
+      "<u>{label}</u><br>{paste(grants, collapse = '<br>')}"
+    ))
+  }
+
+  paste(sections, collapse = "<hr style='margin:4px 0'>")
+}
+
+popup_htmls <- map_chr(seq_len(nrow(all_data)), \(i) build_popup(all_data[i, ]))
+
+all_data <- all_data |>
+  mutate(
+    popup_html = popup_htmls,
+    is_archive = !is.na(in_mama_archive),
+    has_lccmr  = !is.na(lccmr_ids),
+    has_motus  = !is.na(motus_id),
+    has_movebank = !is.na(movebank_id),
+    point_color = if_else(is_archive, archive_color, default_color),
+    border_weight = if_else(is_archive, 3, 1),
+    archive_filter  = if_else(is_archive,   "MN Archive", NA_character_),
+    lccmr_filter    = if_else(has_lccmr,    "LCCMR", NA_character_),
+    motus_filter    = if_else(has_motus,    "Motus", NA_character_),
+    movebank_filter = if_else(has_movebank, "Movebank", NA_character_)
+  ) |>
+  arrange(in_mama_archive)
+
+shared_data <- SharedData$new(all_data)
+
+map <- leaflet(shared_data, width = "100%", height = "550px") |>
+  setView(lng = -93.18743447478747, lat = 46.08212830771725, zoom = 6.4) |>
+  addTiles() |>
+  addCircleMarkers(
+    lng = ~lon, lat = ~lat,
+    radius = 6,
+    color = "#333333",
+    weight = ~border_weight,
+    fillColor = ~point_color,
+    fillOpacity = 0.9,
+    stroke = TRUE,
+    popup = ~popup_html
+  )
+
+# Floating filter panel, positioned directly on top of the map (like a legend)
+filter_panel <- tags$div(
+  style = paste(
+    "position: absolute; bottom: 10px; left: 10px; z-index: 1000;",
+    "background-color: rgb(255, 255, 255, 0.85); padding: 2px 17px; border-radius: 3px;",
+    "box-shadow: 0 1px 5px rgba(0,0,0,0.4); font-size: 13px;",
+    "display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: center;"
+  ),
+  filter_checkbox("archive_filter", "", shared_data, ~archive_filter),
+  filter_checkbox("lccmr_filter", "", shared_data, ~lccmr_filter),
+  filter_checkbox("motus_filter", "", shared_data, ~motus_filter),
+  filter_checkbox("movebank_filter", "", shared_data, ~movebank_filter)
+)
+
+browsable(
+  tags$div(
+    style = "position: relative;",
+    map,
+    filter_panel
+  )
+)
+```
 :::
 
-
-The Minnesota Animal Movement Archive is a collection of studies in [Movebank](https://www.movebank.org/) that contain animal movement and other animal-borne sensor data from the state of Minnesota. With this archive, we aim to bring together datasets from Environment and Natural Resources Trust Fund (ENRTF) projects and partnerships with State, Tribal, Federal, and University researchers to create a unified resource for understanding how Minnesota's wildlife navigate and use their habitats.
-
-This initiative began summer of 2025 and the archive is actively growing, take a look at the [studies](studies.qmd) participating so far.
+::: {.column width="32%"}
+::: {style="border: 1.5px solid #003d06; border-radius: 0.375rem; padding: 1rem;"}
+The archive is a collection of studies in [Movebank](https://www.movebank.org/) that contain animal movement and other animal-borne sensor data from the state of Minnesota. With this archive, we aim to bring together datasets from Environment and Natural Resources Trust Fund (ENRTF) projects and partnerships with State, Tribal, Federal, and University researchers to create a unified resource for understanding how Minnesota's wildlife navigate and use their habitats.
 
 Checkout the [FAQ](faq.qmd), [Submission Guide](submission_guide.qmd), and [About Us](about.qmd) to learn more.
+
+The map to the left depicts animal movement studies gathered from LCCMR grants, Movebank, and Motus. Points in green are studies already in the archive. Click on dots to see details about the data.
+:::
+:::
+
+:::

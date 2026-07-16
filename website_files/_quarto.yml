@@ -29,3 +29,6 @@ format:
   html:
     theme: sandstone
     css: styles.css
+    backgroundcolor: "#FCFBF4"
+    mainfont: "Georgia"
+    monofont: "Fira Code"

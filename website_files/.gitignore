@@ -3,3 +3,7 @@
 
 /_*.local
 *.Rproj.user
+
+
+*.DS_Store
+.Rhistory
