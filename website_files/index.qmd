@@ -54,7 +54,9 @@ build_popup <- function(row) {
   if (!is.na(row$movebank_id)) {
     sections <- c(sections, glue(
       "<u>Movebank</u><br>",
-      "Contact: {coalesce(row$movebank_principal_investigator_name, 'Unknown')}<br>",
+      "Contact: {coalesce(row$movebank_contact, 'Unknown')}<br>",
+      "Start Date: {coalesce(format(row$movebank_timestamp_first_deployed_location, '%Y-%m-%d'), 'Unknown')}<br>",
+      "Latest Date: {coalesce(format(row$movebank_timestamp_last_deployed_location, '%Y-%m-%d'), 'Unknown')}<br>",
       "Taxa: {coalesce(row$movebank_taxon_ids, 'Unknown')}<br>",
       "Sensors: {coalesce(row$movebank_sensor_type_ids, 'Unknown')}<br>",
       "Individuals: {coalesce(as.character(row$movebank_number_of_individuals), 'Unknown')}<br>",
@@ -66,6 +68,9 @@ build_popup <- function(row) {
   if (!is.na(row$motus_id)) {
     sections <- c(sections, glue(
       "<u>Motus</u><br>",
+      "Contact: {coalesce(row$motus_contact, 'Unknown')}<br>",
+      "Start Date: {coalesce(format(row$motus_creation_date, '%Y-%m-%d'), 'Unknown')}<br>",
+      "Species: {coalesce(row$motus_species, 'Unknown')}<br>",
       "Receivers in MN: {coalesce(as.character(row$motus_n_receivers), 'Unknown')}<br>",
       "<a href='{row$motus_url}' target='_blank'>View on Motus</a>"
     ))
@@ -78,10 +83,17 @@ build_popup <- function(row) {
     names    <- str_split(row$lccmr_name, "\\s*;\\s*")[[1]]
     urls     <- str_split(row$lccmr_urls, "\\s*;\\s*")[[1]]
     contacts <- str_split(row$lccmr_contact, "\\s*;\\s*")[[1]]
+    lccmr_start_dates <- str_split(row$lccmr_start_date, "\\s*;\\s*")[[1]]
+    lccmr_end_dates <- str_split(row$lccmr_end_date, "\\s*;\\s*")[[1]]
 
-    grants <- pmap_chr(list(ids, names, urls, contacts), function(id, nm, url, contact) {
+
+    grants <- pmap_chr(list(ids, names, urls, contacts,
+                            lccmr_start_dates, lccmr_end_dates), 
+                       function(id, nm, url, contact, lccmr_start_date, lccmr_end_date) {
       glue("&bull; <a href='{url}' target='_blank'>{id}</a> &ndash; {nm}<br>",
-           "&nbsp;&nbsp;Contact: {coalesce(contact, 'Unknown')}")
+           "&nbsp;&nbsp;&nbsp;&nbsp;Contact: {coalesce(contact, 'Unknown')} <br>",
+           "&nbsp;&nbsp;&nbsp;&nbsp;Start Date: {coalesce(format(lccmr_start_date), 'Unknown')}<br>",
+           "&nbsp;&nbsp;&nbsp;&nbsp;End Date: {coalesce(format(lccmr_end_date), 'Unknown')}")
     })
 
     label <- if (length(ids) > 1) "LCCMR Grants" else "LCCMR Grant"
