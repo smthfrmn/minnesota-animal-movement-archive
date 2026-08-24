@@ -12,8 +12,6 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: studies.qmd
-        text: Studies
       - href: faq.qmd
         text: FAQ
       - text: Participate
@@ -23,7 +21,7 @@ website:
           - text: Participation Agreement
             href: participation_agreement.qmd
       - href: about.qmd
-        text: About Us
+        text: About
 
 format:
   html:

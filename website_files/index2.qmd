@@ -183,7 +183,7 @@ shared_data <- SharedData$new(all_data, key = ~row_key, group = "mama_studies")
 # layerId = ~row_key lets JS individually add/remove a single study's marker
 # later (for the per-row map-selection checkboxes), independent of the
 # crosstalk search/checkbox filtering.
-map <- leaflet(shared_data, width = "100%", height = "550px", elementId = "mama-map") |>
+map <- leaflet(shared_data, width = "100%", height = "650px", elementId = "mama-map") |>
   setView(lng = -93.18743447478747, lat = 46.08212830771725, zoom = 6.4) |>
   addTiles() |>
   addCircleMarkers(
@@ -197,21 +197,6 @@ map <- leaflet(shared_data, width = "100%", height = "550px", elementId = "mama-
     stroke = TRUE,
     popup = ~popup_html
   )
-
-map_legend <- tags$div(
-  style = paste(
-    "display:flex; align-items:center; gap:18px; font-size:12.5px; color:#555;",
-    "margin: 8px 2px 0 2px;"
-  ),
-  tags$span(style = "display:flex; align-items:center; gap:6px;",
-    tags$span(style = glue("display:inline-block; width:11px; height:11px; border-radius:50%; background-color:{archive_color}; border:2px solid #333;")),
-    "In MN Archive"
-  ),
-  tags$span(style = "display:flex; align-items:center; gap:6px;",
-    tags$span(style = glue("display:inline-block; width:11px; height:11px; border-radius:50%; background-color:{default_color}; border:1px solid #333;")),
-    "Not yet archived"
-  )
-)
 
 # Checkbox filters, styled as pill-shaped toggles. label = "" on each
 # filter_checkbox suppresses crosstalk's default heading (which otherwise
@@ -229,13 +214,10 @@ filter_panel <- tagList(
       display: flex; align-items: center; gap: 6px;
       padding: 5px 14px; border: 1px solid #ccc; border-radius: 999px;
       background-color: #f7f7f5; font-size: 13px; font-weight: 500;
-      cursor: pointer; transition: background-color 0.15s, border-color 0.15s, box-shadow 0.15s;
+      cursor: pointer; transition: background-color 0.15s, border-color 0.15s;
     }
     .mama-filter-panel .checkbox label:hover { background-color: #ebebe6; border-color: #999; }
     .mama-filter-panel .checkbox input[type='checkbox'] { width: 14px; height: 14px; margin: 0; accent-color: #41546a; }
-    .mama-filter-panel .checkbox:has(input:checked) label {
-      background-color: #eef2ea; border-color: #41546a; box-shadow: inset 0 0 0 1px #41546a22;
-    }
   ")),
   tags$div(
     class = "mama-filter-panel",
@@ -292,22 +274,17 @@ table_row_html <- function(r) {
   year_display <- if (is.na(r$year_started)) "" else as.character(r$year_started)
   year_sort    <- if (is.na(r$year_started)) "" else as.character(r$year_started)
   archive_sort <- if (r$archive == "Yes") "1" else "0"
-  archive_badge <- if (r$archive == "Yes") {
-    "<span style='background:#eef6e6; color:#3d5c1f; border:1px solid #b9d99a; padding:2px 8px; border-radius:999px; font-size:12px; font-weight:600;'>Yes</span>"
-  } else {
-    "<span style='color:#999;'>No</span>"
-  }
 
   glue(
     "<tr data-key='{r$row_key}'>",
     "<td style='text-align:center;'><input type='checkbox' class='mama-row-select' data-key='{r$row_key}' checked></td>",
-    "<td class='mama-row-num' style='color:#999;'></td>",
-    "<td data-sort='{tolower(r$title)}'><strong>{htmltools::htmlEscape(r$title)}</strong></td>",
+    "<td class='mama-row-num' style='color:#888;'></td>",
+    "<td data-sort='{tolower(r$title)}'>{htmltools::htmlEscape(r$title)}</td>",
     "<td data-sort='{year_sort}'>{year_display}</td>",
     "<td data-sort='{tolower(r$contact)}'>{htmltools::htmlEscape(r$contact)}</td>",
     "<td data-sort='{tolower(r$species)}'><i>{htmltools::htmlEscape(r$species)}</i></td>",
     "<td data-sort='{tolower(r$sources_text)}'>{r$sources_html}</td>",
-    "<td data-sort='{archive_sort}'>{archive_badge}</td>",
+    "<td data-sort='{archive_sort}'>{r$archive}</td>",
     "</tr>"
   )
 }
@@ -315,117 +292,75 @@ table_row_html <- function(r) {
 table_rows_html <- map_chr(seq_len(nrow(table_data)), \(i) table_row_html(table_data[i, ]))
 
 results_table <- HTML(glue(
-  "<table id='mama-results-table'>",
-  "<thead><tr>",
-  "<th style='text-align:center; width:36px;'><input type='checkbox' id='mama-select-all' checked title='Show/hide all on map'></th>",
-  "<th style='width:36px;'>#</th>",
-  "<th data-col='2' class='mama-sortable'>Study</th>",
-  "<th data-col='3' class='mama-sortable'>Year Started</th>",
-  "<th data-col='4' class='mama-sortable'>Contact</th>",
-  "<th data-col='5' class='mama-sortable'>Species</th>",
-  "<th data-col='6' class='mama-sortable'>Sources</th>",
-  "<th data-col='7' class='mama-sortable'>In Archive</th>",
+  "<table id='mama-results-table' style='width:100%; border-collapse:collapse; font-size:13px;'>",
+  "<thead><tr style='text-align:left; border-bottom:2px solid #333;'>",
+  "<th style='padding:6px 8px; text-align:center;'><input type='checkbox' id='mama-select-all' checked title='Show/hide all on map'></th>",
+  "<th style='padding:6px 8px;'>#</th>",
+  "<th data-col='2' class='mama-sortable' style='padding:6px 8px; cursor:pointer;'>Study</th>",
+  "<th data-col='3' class='mama-sortable' style='padding:6px 8px; cursor:pointer;'>Year Started</th>",
+  "<th data-col='4' class='mama-sortable' style='padding:6px 8px; cursor:pointer;'>Contact</th>",
+  "<th data-col='5' class='mama-sortable' style='padding:6px 8px; cursor:pointer;'>Species</th>",
+  "<th data-col='6' class='mama-sortable' style='padding:6px 8px; cursor:pointer;'>Sources</th>",
+  "<th data-col='7' class='mama-sortable' style='padding:6px 8px; cursor:pointer;'>In Archive</th>",
   "</tr></thead>",
   "<tbody>{paste(table_rows_html, collapse = '')}</tbody>",
   "</table>"
 ))
 
-pagination_bar <- tags$div(
-  class = "mama-pagination",
-  tags$button(id = "mama-page-prev", type = "button", "\u2039 Prev"),
-  tags$span(id = "mama-page-indicator", "Page 1"),
-  tags$button(id = "mama-page-next", type = "button", "Next \u203a"),
-  tags$span(style = "margin-left:auto; display:flex; align-items:center; gap:6px;",
-    "Rows per page:",
-    tags$select(id = "mama-page-size",
-      tags$option(value = "10", "10"),
-      tags$option(value = "15", selected = "selected", "15"),
-      tags$option(value = "25", "25"),
-      tags$option(value = "50", "50"),
-      tags$option(value = "999999", "All")
+pagination_bar <- tagList(
+  tags$style(HTML("
+    .mama-pagination { display: flex; align-items: center; gap: 10px; margin-top: 10px; font-size: 13px; }
+    .mama-pagination button {
+      padding: 4px 12px; border: 1px solid #ccc; border-radius: 4px;
+      background-color: #f7f7f5; cursor: pointer; font-size: 13px;
+    }
+    .mama-pagination button:hover:not(:disabled) { background-color: #ebebe6; border-color: #999; }
+    .mama-pagination button:disabled { opacity: 0.45; cursor: default; }
+    .mama-pagination select { padding: 3px 6px; border: 1px solid #ccc; border-radius: 4px; font-size: 13px; }
+  ")),
+  tags$div(
+    class = "mama-pagination",
+    tags$button(id = "mama-page-prev", type = "button", "\u2039 Prev"),
+    tags$span(id = "mama-page-indicator", "Page 1"),
+    tags$button(id = "mama-page-next", type = "button", "Next \u203a"),
+    tags$span(style = "margin-left:auto; display:flex; align-items:center; gap:6px;",
+      "Rows per page:",
+      tags$select(id = "mama-page-size",
+        tags$option(value = "10", "10"),
+        tags$option(value = "15", selected = "selected", "15"),
+        tags$option(value = "25", "25"),
+        tags$option(value = "50", "50"),
+        tags$option(value = "999999", "All")
+      )
     )
   )
 )
-
-page_css <- tags$style(HTML("
-  .mama-card {
-    background-color: #fff; border: 1px solid #e3e2dd; border-radius: 10px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.06); padding: 14px; margin-bottom: 1.75rem;
-  }
-  .mama-section-title {
-    font-size: 15px; font-weight: 700; color: #2c2c2c; margin: 0 0 10px 2px;
-    letter-spacing: 0.02em; text-transform: uppercase; opacity: 0.75;
-  }
-  #mama-search-input {
-    width: 100%; box-sizing: border-box; padding: 10px 14px 10px 36px;
-    border: 1px solid #ccc; border-radius: 8px; font-size: 14px;
-    background: #fff url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"%23888\" stroke-width=\"2\"><circle cx=\"11\" cy=\"11\" r=\"7\"/><line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\"/></svg>') no-repeat 12px center;
-    transition: border-color 0.15s, box-shadow 0.15s;
-  }
-  #mama-search-input:focus {
-    outline: none; border-color: #41546a; box-shadow: 0 0 0 3px #41546a22;
-  }
-  #mama-search-count { font-size: 12px; color: #888; margin-top: 6px; }
-
-  #mama-results-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-  #mama-results-table thead th {
-    position: sticky; top: 0; z-index: 1;
-    background-color: #f7f7f5; text-align: left; padding: 9px 10px;
-    border-bottom: 2px solid #d8d7d0; font-weight: 700; color: #333;
-    white-space: nowrap;
-  }
-  #mama-results-table th.mama-sortable { cursor: pointer; user-select: none; }
-  #mama-results-table th.mama-sortable:hover { background-color: #efeee9; }
-  #mama-results-table tbody td { padding: 8px 10px; border-bottom: 1px solid #ececea; vertical-align: top; }
-  #mama-results-table tbody tr:nth-child(even) { background-color: #fafaf8; }
-  #mama-results-table tbody tr:hover { background-color: #f0f3ee; }
-  #mama-results-table tbody tr td a { color: #41546a; text-decoration: none; }
-  #mama-results-table tbody tr td a:hover { text-decoration: underline; }
-
-  .mama-pagination { display: flex; align-items: center; gap: 10px; margin-top: 12px; font-size: 13px; }
-  .mama-pagination button {
-    padding: 5px 14px; border: 1px solid #ccc; border-radius: 6px;
-    background-color: #f7f7f5; cursor: pointer; font-size: 13px; transition: background-color 0.15s;
-  }
-  .mama-pagination button:hover:not(:disabled) { background-color: #ebebe6; border-color: #999; }
-  .mama-pagination button:disabled { opacity: 0.4; cursor: default; }
-  .mama-pagination select { padding: 4px 8px; border: 1px solid #ccc; border-radius: 6px; font-size: 13px; }
-  #mama-page-indicator { color: #666; }
-"))
 ```
 
 ```{r echo=FALSE}
 tagList(
-  page_css,
   tags$script(id = "mama-search-data", type = "application/json", HTML(search_json)),
-  tags$script(src = "https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.6.2/fuse.min.js")
+  tags$script(src = "https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.6.2/fuse.min.js"),
+  tags$input(
+    type = "text", id = "mama-search-input",
+    placeholder = "Search studies by name, contact, species, or grant ID...",
+    style = "width:100%; box-sizing:border-box; padding:8px 10px; border:1px solid #ccc; border-radius:4px; font-size:14px;"
+  ),
+  filter_panel,
+  tags$div(id = "mama-search-count", style = "font-size:12px; color:#777; margin-top:2px; margin-bottom: 1rem;")
 )
 ```
 
-::: {.mama-card}
+::: {.columns}
+
+::: {.column style="width:42%; padding-right: 2%;"}
 ```{r echo=FALSE}
 map
 ```
-```{r echo=FALSE}
-map_legend
-```
 :::
 
-::: {.mama-card}
-```{r echo=FALSE}
-tags$input(
-  type = "text", id = "mama-search-input",
-  placeholder = "Search studies by name, contact, species, or grant ID..."
-)
-```
-```{r echo=FALSE}
-filter_panel
-```
-```{r echo=FALSE}
-tags$div(id = "mama-search-count", style = "padding-bottom: 12px; border-bottom: 1px solid #e3e2dd;")
-```
-
-::: {style="overflow-x: auto; margin-top: 12px;"}
+::: {.column style="width:56%;"}
+::: {style="overflow-x: auto;"}
 ```{r echo=FALSE}
 results_table
 ```
@@ -433,6 +368,8 @@ results_table
 ```{r echo=FALSE}
 pagination_bar
 ```
+:::
+
 :::
 
 ```{r echo=FALSE}

@@ -25,6 +25,7 @@ move2::movebank_store_credentials(
   password = password
 )
 
+all_studies <- movebank_retrieve(entity_type = "study")
 
 all_studies_sf <- st_as_sf(all_studies, sf_column_name = "main_location")
 
