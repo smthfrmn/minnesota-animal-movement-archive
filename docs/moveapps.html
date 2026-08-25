@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>About – Minnesota Animal Movement Archive</title>
+<title>Using MoveApps with Your Movement Data – Minnesota Animal Movement Archive</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -74,7 +74,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -116,11 +116,11 @@ ul.task-list li input[type="checkbox"] {
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./moveapps.html"> 
+    <a class="nav-link active" href="./moveapps.html" aria-current="page"> 
 <span class="menu-text">MoveApps</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./about.html" aria-current="page"> 
+    <a class="nav-link" href="./about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -134,13 +134,27 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#resource-selection-functions-rsfs" id="toc-resource-selection-functions-rsfs" class="nav-link" data-scroll-target="#resource-selection-functions-rsfs">Resource Selection Functions (RSFs)</a></li>
+  <li><a href="#home-range-space-use" id="toc-home-range-space-use" class="nav-link" data-scroll-target="#home-range-space-use">Home Range &amp; Space Use</a></li>
+  <li><a href="#animations" id="toc-animations" class="nav-link" data-scroll-target="#animations">Animations</a></li>
+  <li><a href="#data-summaries" id="toc-data-summaries" class="nav-link" data-scroll-target="#data-summaries">Data Summaries</a></li>
+  <li><a href="#movement-metrics" id="toc-movement-metrics" class="nav-link" data-scroll-target="#movement-metrics">Movement Metrics</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">About</h1>
+<h1 class="title">Using MoveApps with Your Movement Data</h1>
+<p class="subtitle lead">Some examples of the workflows in MoveApps</p>
 </div>
 
 
@@ -157,34 +171,236 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>The archive is a collection of studies in <a href="https://www.movebank.org/">Movebank</a> that contain animal movement and other animal-borne sensor data from the state of Minnesota. With this archive, we aim to bring together datasets from Environment and Natural Resources Trust Fund (ENRTF) projects and partnerships with State, Tribal, Federal, and University researchers to create a unified resource for understanding how Minnesota’s wildlife navigate and use their habitats.</p>
-<p>Checkout the <a href="./faq.html">FAQ</a>, <a href="./submission_guide.html">Submission Guide</a>, and <a href="./about.html">About Us</a> to learn more.</p>
-<p>The map above depicts animal movement studies gathered from LCCMR grants, Movebank, and Motus. Points in green are studies already in the archive. Click on dots to see details about the data.</p>
-<p>We are supported by an ENRTF grant: <a href="https://www.lccmr.mn.gov/proposals/2025/originals/proposal_2025-111.pdf">Data/Tools to Maximize Impact of ENTRF Projects</a>. Long-term maintenance and support is provided by the University of Minnesota and Movebank. For more information about participating in, or using the Minnesota Animal Movement Archive, contact Smith at freem850@umn.edu. <br> <br></p>
-<div class="columns">
-<div class="column" style="width:30%;">
-<p><img src="images/john_photo.png" class="img-fluid" width="300"></p>
-</div><div class="column" style="width:2%;">
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p><a href="https://www.moveapps.org/">MoveApps</a> is a free analysis platform for animal tracking data hosted by the Max Planck Institute of Animal Behavior. The aim is to empower the movement ecology community to make sophisticated analytical tools accessible to a larger audience.</p>
+<p>You can perform many different kind of analyses, generate summaries, and animate movement data using “Workflows” which are composed of a series of “Apps.” MoveApps naturally integrates with Movebank, so if your data are in Movebank, getting up and running on MoveApps will be easy.</p>
+<p>This page walks through a few popular Workflows in MoveApps, with example outputs dropped below each section.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/moveapps_workflow.png" class="img-fluid figure-img"></p>
+<figcaption>Example of a MoveApps Workflow</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="resource-selection-functions-rsfs" class="level2">
+<h2 class="anchored" data-anchor-id="resource-selection-functions-rsfs">Resource Selection Functions (RSFs)</h2>
+<p>MoveApp’s RSF App estimates how animals select habitat relative to what’s available, typically by comparing used locations to background/available points and fitting a selection function against environmental covariates (land cover, elevation, distance to roads, canopy cover, etc.). MoveApps provides a number of spatial layers (i.e., percent tree cover, land cover type, global human modification, and elevation).</p>
+<section id="example-workflow" class="level4">
+<h4 class="anchored" data-anchor-id="example-workflow">Example Workflow</h4>
+<p><a href="https://www.moveapps.org/workflows/public/13294ae4-22d5-499f-9327-5ee40d2d3a28">Alberta Wolves - Human Modification</a></p>
+<p>Model resource selection for population of Alberta wolves, using the default Global Human Modification raster layer</p>
+</section>
+<section id="example-output" class="level4">
+<h4 class="anchored" data-anchor-id="example-output">Example output</h4>
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div class="quarto-layout-panel" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/raster_plot.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Raster of Global Human Modification</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/used_background_densities_plot.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Used vs Background Densities</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/model_coeffcient_plot.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Model Coefficient Plot</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="home-range-space-use" class="level2">
+<h2 class="anchored" data-anchor-id="home-range-space-use">Home Range &amp; Space Use</h2>
+<p>Apps in this category estimate space use from GPS fixes — including autocorrelated kernel density estimation (AKDE), minimum convex polygons, and utilization distributions — useful for territory size, overlap, and seasonal range comparisons.</p>
+<section id="example-workflow-1" class="level4">
+<h4 class="anchored" data-anchor-id="example-workflow-1">Example Workflow</h4>
+<p><a href="https://www.moveapps.org/workflows/public/e144afb4-37eb-4c8a-aa83-b0c5f9c7027b">Range Estimation</a></p>
+<p>Assess and map space use by two methods: Home Range Kernel Utilization Distribution (estimates the utilization distribution [based on the R ‘adehabitat’ package] at a user-defined isopleth and provides population and individual home range polygons) and Recent core area range and points (estimates the core area [50% isopleth, based on the R ‘amt’ package] of individual animals across user-defined time period and provides and overview of the number of locations in the core area by time).</p>
+</section>
+<section id="example-output-1" class="level4">
+<h4 class="anchored" data-anchor-id="example-output-1">Example output</h4>
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div class="quarto-layout-panel" data-layout-ncol="1">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/homerange.png" class="img-fluid figure-img"></p>
+<figcaption>Home Ranges of African Buffalo</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="animations" class="level2">
+<h2 class="anchored" data-anchor-id="animations">Animations</h2>
+<p>MoveApps has an App that renders movement tracks as animated GIFs/MP4s over a basemap. Can be useful for presentations, outreach, or spot-checking odd trajectories.</p>
+<section id="example-workflow-2" class="level4">
+<h4 class="anchored" data-anchor-id="example-workflow-2">Example Workflow</h4>
+<p><a href="https://www.moveapps.org/workflows/public/2208eb2f-dc5a-48f9-b4e7-82273ea774b9">Sandhill &amp; Trumpeter Swan Animations</a></p>
+</section>
+<section id="example-output-2" class="level4">
+<h4 class="anchored" data-anchor-id="example-output-2">Example output</h4>
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sandhill_cranes_animation.gif" class="img-fluid figure-img"></p>
+<figcaption>Sandhill Cranes</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/swans_animation.gif" class="img-fluid figure-img"></p>
+<figcaption>Trumpeter Swans</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="data-summaries" class="level2">
+<h2 class="anchored" data-anchor-id="data-summaries">Data Summaries</h2>
+<p>MoveApps offers data summary apps that allow you to see things like fix rate, number of locations, mean fix interval times, and downloadable interactive maps.</p>
+<section id="example-workflow-3" class="level4">
+<h4 class="anchored" data-anchor-id="example-workflow-3">Example Workflow</h4>
+<p><a href="https://www.moveapps.org/workflows/public/20b7788d-27fd-4e71-b568-f71f83466634">Data Summary &amp; Map</a></p>
+<p>Use this workflow to get data from Movebank and check how it is read by MoveApps. Read data from Movebank and review a summary of the temporal scope of the data and an interactive map. Then convert to csv for download, with the study details and reference data included.</p>
+</section>
+<section id="example-output-3" class="level4">
+<h4 class="anchored" data-anchor-id="example-output-3">Example output</h4>
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/fix_interval_summary.png" class="img-fluid figure-img"></p>
+<figcaption>Example of Interval Summary</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/map.png" class="img-fluid figure-img"></p>
+<figcaption>Map of Sandhill Cranes</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="movement-metrics" class="level2">
+<h2 class="anchored" data-anchor-id="movement-metrics">Movement Metrics</h2>
+<p>MoveApps also has Apps that derive step-level and trajectory-level metrics (e.g., step length, turning angle, speed, net squared displacement, elevation) which feed into behavioral state classification or step-selection analysis downstream.</p>
+<section id="example-workflow-4" class="level4">
+<h4 class="anchored" data-anchor-id="example-workflow-4">Example Workflow</h4>
+<p><a href="https://www.moveapps.org/workflows/public/b3dc6bdd-dc04-4da6-ac57-b1fab35861e1">Movement Statistics of Sandhill Cranes</a></p>
+<p>Example workflow to explore bird/bat flight behavior. It calculates between-location speed and compares it with ground speed. Exploring the different height and elevation measures. This is an updated Workflow of the name sake from 2023.</p>
+</section>
+<section id="example-output-4" class="level4">
+<h4 class="anchored" data-anchor-id="example-output-4">Example output</h4>
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div class="quarto-layout-panel" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/speed_histogram.png" class="img-fluid figure-img"></p>
+<figcaption>Histogram of Sandhill Crane Speed</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/timelag_histogram.png" class="img-fluid figure-img"></p>
+<figcaption>Time lag between fixes of Sandhill Crane Speed</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/elevation.png" class="img-fluid figure-img"></p>
+<figcaption>Elevations and Heigh Above Ground</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
-</div><div class="column" style="width:68%;">
-<div style="line-height: 1.2;padding-left=100">
-<p><br> <br> <strong>Dr.&nbsp;John Fieberg</strong><br> Professor of Quantitative Ecology<br> University of Minnesota<br> <a href="https://fieberg-lab.cfans.umn.edu/">Website</a><br></p>
-</div>
-</div>
-</div>
-<div class="columns">
-<div class="column" style="width:30%;">
-<p><img src="images/smithfreeman.png" class="img-fluid"></p>
-</div><div class="column" style="width:2%;">
 
-</div><div class="column" style="width:68%;">
-<div style="line-height: 1.2;padding-left=100">
-<p><br> <br> <br> <strong>Smith Freeman</strong><br> Conservation Science PhD Student<br> University of Minnesota<br></p>
-</div>
-</div>
-</div>
-
-
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
