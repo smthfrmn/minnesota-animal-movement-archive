@@ -20,6 +20,8 @@ website:
             href: submission_guide.qmd
           - text: Participation Agreement
             href: participation_agreement.qmd
+      - href: moveapps.qmd
+        text: MoveApps
       - href: about.qmd
         text: About
 
